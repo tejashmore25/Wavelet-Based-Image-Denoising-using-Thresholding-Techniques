@@ -1,5 +1,6 @@
 import numpy as np
 from cv2 import GaussianBlur, medianBlur
+from skimage.metrics import structural_similarity as ssim
 
 #Threshold
 def applyThreshold(coeffs, threshold):
@@ -18,6 +19,11 @@ def get_sigma_est(coeffs_list):
 #Evaluation
 def mse(img1, img2):
   return np.mean((img1 - img2) ** 2)
+
+def calculate_ssim(img, ref_img):
+    img = (img * 255).astype(np.uint8)
+    ref_img = (ref_img * 255).astype(np.uint8)
+    return ssim(ref_img, img)
 
 # Smoothing Function
 def gaussianSmoothing(noisy_image, size = 5, sigma = 0):
