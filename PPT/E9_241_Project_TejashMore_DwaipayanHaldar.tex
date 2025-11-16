@@ -128,101 +128,230 @@ The complete workflow is given cameraman image. Level-1 wavelet decompostion is 
         \subcaption{}
         % \label{fig:2b}
     \end{minipage}
-    \caption{Denoising Using whileavelet Transform Flowchart: (a) Denoised Image, (b) DWT with Haar Wavelet Level-1, (c) Thresholded Wavelet coefficients using BayesShrink threshold, (d) Denoised Image}
+    \caption{Denoising Using wavelet Transform Flowchart: (a) Denoised Image, (b) DWT with Haar Wavelet Level-1, (c) Thresholded Wavelet coefficients using BayesShrink threshold, (d) Denoised Image}
 \end{figure}
 
 
 \end{frame}
 
 % ---------- FRAME 6 ----------
-\begin{frame}{Cameraman: Different Noises}
+\begin{frame}{Cameraman: Comparison with Haar Wavelet}
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_noise.png} 
+        \subcaption{SSIM: 27.99, PSNR: 20.57}
+        % \label{fig:2a}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_haar_visu.png}
+        \subcaption{SSIM: 70.96, PSNR: 23.97}
+        % \label{fig:2b}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_haar_sure.png}
+        \subcaption{SSIM: 71.26, PSNR: 27.97}
+        % \label{fig:2b}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_haar_bayes.png}
+        \subcaption{SSIM: 68.62, PSNR: 27.75}
+        % \label{fig:2b}
+    \end{minipage}
 
+    \centering
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_uniform_noise.png} 
+        \subcaption{SSIM: 43.78, PSNR: 25.02}
+        % \label{fig:2a}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_uniform_haar_visu.png}
+        \subcaption{SSIM: 75.87, PSNR: 25.72}
+        % \label{fig:2b}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_uniform_haar_sure.png}
+        \subcaption{SSIM: 84.09, PSNR: 30.98}
+        % \label{fig:2b}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_uniform_haar_bayes.png}
+        \subcaption{SSIM: 79.21, PSNR: 30.69}
+        % \label{fig:2b}
+    \end{minipage}
+    \caption{Image Comparison: (a) Gaussian Noisy Image, (b) Denoised Image (Gaussian, VisuShrink), (c) Denoised Image (Gaussian, SureShrink), (d) Denoised Image (Gaussian, BayesShrink), (e) Uniform Noisy Image, (f) Denoised Image (Uniform, VisuShrink), (g) Denoised Image (Uniform, SureShrink), (h) Denoised Image (Uniform, BayesShrink)}
+\end{figure}
 
 
 \end{frame}
 
 % ---------- FRAME 7 ----------
-\begin{frame}{Visual Results (Example: Cameraman)}
-\begin{itemize}
-    \item Show Noisy Image
-    \item VisuShrink result (PSNR: X dB, SSIM: Y)
-    \item SUREShrink result (PSNR: X dB, SSIM: Y)
-    \item BayesShrink result (PSNR: X dB, SSIM: Y)
-\end{itemize}
-\textbf{[Insert 4-image comparison grid]}
+\begin{frame}{Cameraman: Comparison with Db4 Wavelet}
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_noise.png} 
+        \subcaption{SSIM: 27.99, PSNR: 20.57}
+        % \label{fig:2a}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_db4_visu.png}
+        \subcaption{SSIM: 71.88, PSNR: 24.91}
+        % \label{fig:2b}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_db4_sure.png}
+        \subcaption{SSIM: 73.40, PSNR: 29.17}
+        % \label{fig:2b}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_db4_bayes.png}
+        \subcaption{SSIM: 73.00, PSNR: 29.28}
+        % \label{fig:2b}
+    \end{minipage}
+
+    \centering
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_uniform_noise.png} 
+        \subcaption{SSIM: 43.78, PSNR: 25.02}
+        % \label{fig:2a}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_uniform_db4_visu.png}
+        \subcaption{SSIM: 76.87, PSNR: 26.89}
+        % \label{fig:2b}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{../outputImage/cameraman_uniform_db4_sure.png}
+        \subcaption{SSIM: 85.39, PSNR: 32.41}
+        % \label{fig:2b}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_uniform_db4_bayes.png}
+        \subcaption{SSIM: 81.69, PSNR: 32.09}
+        % \label{fig:2b}
+    \end{minipage}
+    \caption{Image Comparison: (a) Gaussian Noisy Image, (b) Denoised Image (Gaussian, VisuShrink), (c) Denoised Image (Gaussian, SureShrink), (d) Denoised Image (Gaussian, BayesShrink), (e) Uniform Noisy Image, (f) Denoised Image (Uniform, VisuShrink), (g) Denoised Image (Uniform, SureShrink), (h) Denoised Image (Uniform, BayesShrink)}
+\end{figure}
 \end{frame}
 
 % ---------- FRAME 8 ----------
-\begin{frame}{Quantitative Comparison (Averaged Over 12 Images)}
-\begin{itemize}
-    \item \textbf{Average PSNR Table}
-\end{itemize}
+\begin{frame}{Cameraman: Comparison with Spatial Filter Image}
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_db4_visu.png}
+        \subcaption{SSIM: 71.88, PSNR: 24.91}
+        % \label{fig:2a}
+    \end{minipage}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_db4_sure.png}
+        \subcaption{SSIM: 73.40, PSNR: 29.17}
+        % \label{fig:2b}
+    \end{minipage}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_db4_bayes.png}
+        \subcaption{SSIM: 73.00, PSNR: 29.28}
+        % \label{fig:2b}
+    \end{minipage}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_denoised_spatial.png} 
+        \subcaption{SSIM: 75.78, PSNR: 27.54}
+        % \label{fig:2b}
+    \end{minipage}
 
-\begin{center}
-\begin{tabular}{|c|c|c|c|}
-\hline
-Noise & VisuShrink & SUREShrink & BayesShrink \\
-\hline
-Gaussian & XX.X & XX.X & XX.X \\
-Salt-Pepper & XX.X & XX.X & XX.X \\
-Random & XX.X & XX.X & XX.X \\
-\hline
-\end{tabular}
-\end{center}
-
-\begin{itemize}
-    \item \textbf{Average SSIM Table}
-\end{itemize}
-
-\begin{center}
-\begin{tabular}{|c|c|c|c|}
-\hline
-Noise & VisuShrink & SUREShrink & BayesShrink \\
-\hline
-Gaussian & X.XXX & X.XXX & X.XXX \\
-Salt-Pepper & X.XXX & X.XXX & X.XXX \\
-Random & X.XXX & X.XXX & X.XXX \\
-\hline
-\end{tabular}
-\end{center}
+    \caption{Image Comparison: (a) Denoised Image (Gaussian, VisuShrink), (b) Denoised Image (Gaussian, SureShrink), (c) Denoised Image (Gaussian, BayesShrink), (d) Denoised Image (Gaussian Spatial Filter)}
+\end{figure}
 \end{frame}
 
-% ---------- FRAME 9 (fixed) ----------
-\begin{frame}{Graphical Comparison}
-\begin{itemize}
-    \item Bar plot: PSNR vs Algorithm for Gaussian Noise
-    \item Bar plot: PSNR vs Algorithm for Salt-and-Pepper Noise
-    \item Bar plot: SSIM comparison
-\end{itemize}
-\textbf{[Insert graphs/placeholders here]}
+% -----------------------------
+
+% ---------- FRAME 9 ----------
+\begin{frame}{Quantitative Comparison (Standard Image Dataset)}
+\small Comparison of SSIM plots of 12 standard test images with 2 Wavelet based thresholding methods(Db4) and spatial domain filtering(Gaussian Filter, Median Filter) is calculated for different Gaussian Noise, Salt and Pepper Noise and Uniform Noise.\\
+\phantom{123}
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/comparison_plot_gaussian.png} 
+        \subcaption{}
+        % \label{fig:2a}
+    \end{minipage}
+
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/comparison_plot_uniform.png}
+        \subcaption{}
+        % \label{fig:2b}
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{../outputImage/comparison_plot_sp.png}
+        \subcaption{}
+        % \label{fig:2b}
+    \end{minipage}
+
+    \caption{(a) Gaussian, (b)Uniform, (c) Salt and Pepper Noise}
+\end{figure}
+
 \end{frame}
 
-% ---------- FRAME 10 ----------
-\begin{frame}{Failure Cases and Limitations}
+% ---------- FRAME 10 (fixed) ----------
+\begin{frame}{Discussion}
 \begin{itemize}
-    \item Textured images (e.g., Barbara) show artifacts
-    \item VisuShrink oversmooths edges
-    \item Salt-and-pepper noise not well handled by wavelets
-    \item High-frequency details often lost
-    \item Threshold selection sensitive to noise variance estimation
+    \item \textbf{Wavelet:} One observation while operating with different mother wavelets is that \textit{Db4} performs better than \textit{Haar} in almost all the cases. That is expected since \textit{Db4} is smoother and more correlated to natural images than \textit{Haar} wavelet. 
+    \item \textbf{Noise:} While wavelet domain denoising performs pretty well for Gaussian and Uniform noise, it fails for Salt and Pepper Noise and lags much behind Median filters. This happens due to the prior assumption of Gaussian Noise in all the thresholding methods.
+    \item \textbf{Thresholding:} SUREShrink and BayesShrink almost goes parallel to each other. That is also evident from the \cite{b5} where the author compares BayesShrink and SUREShrink, that comes out to be within 8\% of each other. VisuShrink is universal thresholding it oversmooths images in most cases, giving below average results.
 \end{itemize}
-\textbf{[Insert failure case images]}
 \end{frame}
 
 % ---------- FRAME 11 ----------
-\begin{frame}{Conclusion}
-\begin{itemize}
-    \item BayesShrink gives highest PSNR for Gaussian noise
-    \item SUREShrink gives best detail preservation
-    \item VisuShrink is simplest but oversmooths
-    \item Wavelet denoising effective but limited for non-Gaussian noise
-    \item Future work:
-    \begin{itemize}
-        \item Non-local Means + Wavelets
-        \item BLS-GSM
-        \item Deep Learning-based Hybrid Models
-    \end{itemize}
-\end{itemize}
+\begin{frame}{References}
+\begin{thebibliography}{00}
+
+\bibitem{b1} S. Mallat, \emph{A Wavelet Tour of Signal Processing}. San Diego, CA, USA: Academic Press, 1999.
+
+\bibitem{b2} D. L. Donoho, ``De-noising by soft-thresholding,'' \emph{IEEE Trans. Inf. Theory}, vol.~41, no.~3, pp.~613--627, 1995.
+
+\bibitem{b3} D. L. Donoho and I. M. Johnstone, ``Adapting to unknown smoothness via wavelet shrinkage,'' \emph{J. Amer. Stat. Assoc.}, vol.~90, no.~432, pp.~1200--1224, 1995.
+
+\bibitem{b4} D. L. Donoho and I. M. Johnstone, ``Threshold selection for wavelet shrinkage of noisy data,'' in \emph{Proc. 16th Annu. Int. Conf. IEEE Eng. Med. Biol. Soc.}, vol.~1, 1994, pp.~A24--A25.
+
+\bibitem{b5} S. G. Chang, B. Yu, and M. Vetterli, ``Adaptive wavelet thresholding for image denoising and compression,'' \emph{IEEE Trans. Image Process.}, vol.~9, no.~9, pp.~1532--1546, 2000.
+
+\end{thebibliography}
+\end{frame}
+
+%------------------------------
+
+
+\begin{frame}{}
+    \centering
+    \Huge{Thank You!}
+    \vspace{1cm}
+    % \\ \Large{Questions?}
 \end{frame}
 
 
