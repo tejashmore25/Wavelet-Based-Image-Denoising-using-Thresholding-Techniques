@@ -30,4 +30,5 @@ def gaussianSmoothing(noisy_image, size = 5, sigma = 0):
     return GaussianBlur(noisy_image, (size, size), sigma)
 
 def medianSmoothing(noisy_image, size = 5):
-    return medianBlur(noisy_image, size)
+    noisy_image = noisy_image.astype(np.float32)
+    return medianBlur(noisy_image, size).astype(np.float64)
