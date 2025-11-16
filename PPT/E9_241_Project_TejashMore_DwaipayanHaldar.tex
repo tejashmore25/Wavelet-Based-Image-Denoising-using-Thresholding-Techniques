@@ -1,0 +1,229 @@
+\documentclass{beamer}
+\usepackage{graphicx} % Package for images
+\usepackage{caption} % Package for numbering figures
+\usepackage{subcaption}
+\setbeamertemplate{caption}[numbered] % Enable numbering for figures
+\captionsetup{font=tiny} % Reduce caption size
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{bbm}
+\usepackage{dsfont}
+\usetikzlibrary{trees, positioning}
+% Theme choice
+\usetheme{Frankfurt} % Changed theme to Frankfurt
+\pgfplotsset{compat=1.18}
+\usepackage{helvet} \renewcommand{\familydefault}{\sfdefault}
+\setbeamertemplate{headline}{\leavevmode\hbox{}} 
+
+% Title and author details
+\title{Wavelet Based Image Denoising}
+\author{Tejash More, Dwaipayan Haldar \protect\linebreak M Tech, Signal Processing \protect\linebreak Indian Institute of Science}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+\maketitle
+\end{frame}
+
+% ---------- FRAME 1 ----------
+\begin{frame}{Introduction}
+\begin{itemize}
+    \item Spatial denoising smooths pixels directly, so it often blurs edges and fine textures, especially at higher noise levels. It cannot distinguish noise from real high-frequency details.
+    \item While wavelet based denoising, noise is spread mostly as low coefficients values in the wavelet domain. Applying the threshold removes the low coefficient noise while preserving the high coefficient edges.
+    \item The basic workflow of our denoising algorithm works as follows:
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale = .27]{Block-diagram-of-Image-denoising-using-Wavelet-Transform.png}
+    \caption{Flowchart of the Overall Algorithm}
+    \label{fig:flowchart}
+    \end{figure}
+\end{itemize}
+
+
+
+\end{frame}
+
+% ---------- FRAME 2 ----------
+\begin{frame}{The Wavelet Transform}
+\begin{itemize}
+    \item The Discrete Wavelet Transform (DWT) decomposes an image into multiple frequency subbands (LL, HL, LH, HH), capturing coarse structure and fine details at different scales.
+    \item  It provides a sparse representation where important features concentrate in a few large coefficients.
+    \item Noise mostly appears in the high-frequency bands, making it easy to remove using thresholding.
+\end{itemize}
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_wavelet_haar_lvl_1.png} 
+        % \caption{(a)}
+        % \label{fig:2a}
+    \end{minipage}
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/lena_wavelet_haar_lvl_1.png}
+        % \caption{(b)}
+        % \label{fig:2b}
+    \end{minipage}
+    \caption{LL,HL,LH,HH representation for cameraman and lena with Haar Wavelet (1-Level)}
+\end{figure}
+\end{frame}
+
+% ---------- FRAME 3 ----------
+\begin{frame}{Thresholding / Shrinking Algorithms}
+\textbf{VisuShrink}
+\begin{itemize}
+    \item Simplest of all. Oversmooths. Uses universal threshold: $T = \sigma \sqrt{2 \log n}$, where $\sigma$ is estimated by the robust median estimator $\hat\sigma = \frac{ Median(|Y_{ij}|)}{0.6745}, Y_{ij} \in  \text{subband HH1}$
+\end{itemize}
+
+\textbf{SUREShrink}
+\begin{itemize}
+    \item Uses Stein's Unbiased Risk Estimate(SURE) for estimating bayesian risk. Picks the threshold that minimizes $SURE(t;\mathbf{x})$. It is given by:
+\[
+T_S = argmin_{t\geq0} SURE(t;\mathbf{x}) = d - 2\cdot\sum_{i=1}^{d}\mathds{1}_{|x_i|\leq t} + \sum_{i=1}^{d} min(x_i^2, y^2)
+\]
+\end{itemize}
+
+\textbf{BayesShrink}
+\begin{itemize}
+    \item Minimizes the Bayesian risk using a GGD prior. 
+\[
+T_B = \frac{\sigma^2}{\sigma_X}; \hat\sigma_X = \sqrt{max(\hat\sigma_Y^2-\hat\sigma^2,0)}; \hat\sigma_Y^2 = \frac{1}{n^2}\sum_{i,j=1}^{n} Y_{ij}^2
+\] 
+\end{itemize}
+\end{frame}
+
+% ---------- FRAME 5 ----------
+\begin{frame}{Cameraman: Complete Workflow}
+The complete workflow is given cameraman image. Level-1 wavelet decompostion is shown for easy visualization. Experiments are carried on Level-4. Here Haar filter is used. Denoising is done using BayesShrink.
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.20\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_noise.png} 
+        \subcaption{}
+        % \label{fig:2a}
+    \end{minipage}
+    $\stackrel{\text{\TINY DWT(L-1)}}\rightarrow$
+    \begin{minipage}{0.20\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_wavelet_haar_lvl_1.png}
+        \subcaption{}
+        % \label{fig:2b}
+    \end{minipage}
+    $\underset{\text{\TINY Threshold}}{\overset{\text{\TINY Bayesshrink}}{\rightarrow}}$
+    \begin{minipage}{0.20\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{../outputImage/cameraman_wavelet_haar_lvl_1_bayes_denoised.png}
+        \subcaption{}
+        % \label{fig:2b}
+    \end{minipage}
+    $\stackrel{\text{\TINY IDWT(L-1)}}\rightarrow$
+    \begin{minipage}{0.20\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{../outputImage/cameraman_denoised_haar_level_1_bayes.png}
+        \subcaption{}
+        % \label{fig:2b}
+    \end{minipage}
+    \caption{Denoising Using whileavelet Transform Flowchart: (a) Denoised Image, (b) DWT with Haar Wavelet Level-1, (c) Thresholded Wavelet coefficients using BayesShrink threshold, (d) Denoised Image}
+\end{figure}
+
+
+\end{frame}
+
+% ---------- FRAME 6 ----------
+\begin{frame}{Cameraman: Different Noises}
+
+
+
+\end{frame}
+
+% ---------- FRAME 7 ----------
+\begin{frame}{Visual Results (Example: Cameraman)}
+\begin{itemize}
+    \item Show Noisy Image
+    \item VisuShrink result (PSNR: X dB, SSIM: Y)
+    \item SUREShrink result (PSNR: X dB, SSIM: Y)
+    \item BayesShrink result (PSNR: X dB, SSIM: Y)
+\end{itemize}
+\textbf{[Insert 4-image comparison grid]}
+\end{frame}
+
+% ---------- FRAME 8 ----------
+\begin{frame}{Quantitative Comparison (Averaged Over 12 Images)}
+\begin{itemize}
+    \item \textbf{Average PSNR Table}
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Noise & VisuShrink & SUREShrink & BayesShrink \\
+\hline
+Gaussian & XX.X & XX.X & XX.X \\
+Salt-Pepper & XX.X & XX.X & XX.X \\
+Random & XX.X & XX.X & XX.X \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{itemize}
+    \item \textbf{Average SSIM Table}
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Noise & VisuShrink & SUREShrink & BayesShrink \\
+\hline
+Gaussian & X.XXX & X.XXX & X.XXX \\
+Salt-Pepper & X.XXX & X.XXX & X.XXX \\
+Random & X.XXX & X.XXX & X.XXX \\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+% ---------- FRAME 9 (fixed) ----------
+\begin{frame}{Graphical Comparison}
+\begin{itemize}
+    \item Bar plot: PSNR vs Algorithm for Gaussian Noise
+    \item Bar plot: PSNR vs Algorithm for Salt-and-Pepper Noise
+    \item Bar plot: SSIM comparison
+\end{itemize}
+\textbf{[Insert graphs/placeholders here]}
+\end{frame}
+
+% ---------- FRAME 10 ----------
+\begin{frame}{Failure Cases and Limitations}
+\begin{itemize}
+    \item Textured images (e.g., Barbara) show artifacts
+    \item VisuShrink oversmooths edges
+    \item Salt-and-pepper noise not well handled by wavelets
+    \item High-frequency details often lost
+    \item Threshold selection sensitive to noise variance estimation
+\end{itemize}
+\textbf{[Insert failure case images]}
+\end{frame}
+
+% ---------- FRAME 11 ----------
+\begin{frame}{Conclusion}
+\begin{itemize}
+    \item BayesShrink gives highest PSNR for Gaussian noise
+    \item SUREShrink gives best detail preservation
+    \item VisuShrink is simplest but oversmooths
+    \item Wavelet denoising effective but limited for non-Gaussian noise
+    \item Future work:
+    \begin{itemize}
+        \item Non-local Means + Wavelets
+        \item BLS-GSM
+        \item Deep Learning-based Hybrid Models
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\end{document}
