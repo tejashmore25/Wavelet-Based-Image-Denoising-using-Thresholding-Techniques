@@ -1,0 +1,150 @@
+% ---------- FRAME 6 ----------
+\begin{frame}{Cameraman: Comparison with Haar Wavelet}
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_noise.png} 
+        \subcaption{SSIM: 27.99, PSNR: 20.57}
+        % \label{fig:2a}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_haar_visu.png}
+        \subcaption{SSIM: 70.96, PSNR: 23.97}
+        % \label{fig:2b}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_haar_sure.png}
+        \subcaption{SSIM: 71.26, PSNR: 27.97}
+        % \label{fig:2b}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_haar_bayes.png}
+        \subcaption{SSIM: 68.62, PSNR: 27.75}
+        % \label{fig:2b}
+    \end{minipage}
+
+    \centering
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_uniform_noise.png} 
+        \subcaption{SSIM: 43.78, PSNR: 25.02}
+        % \label{fig:2a}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_uniform_haar_visu.png}
+        \subcaption{SSIM: 75.87, PSNR: 25.72}
+        % \label{fig:2b}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_uniform_haar_sure.png}
+        \subcaption{SSIM: 84.09, PSNR: 30.98}
+        % \label{fig:2b}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_uniform_haar_bayes.png}
+        \subcaption{SSIM: 79.21, PSNR: 30.69}
+        % \label{fig:2b}
+    \end{minipage}
+    \caption{Image Comparison: (a) Gaussian Noisy Image, (b) Denoised Image (Gaussian, VisuShrink), (c) Denoised Image (Gaussian, SureShrink), (d) Denoised Image (Gaussian, BayesShrink), (e) Uniform Noisy Image, (f) Denoised Image (Uniform, VisuShrink), (g) Denoised Image (Uniform, SureShrink), (h) Denoised Image (Uniform, BayesShrink)}
+\end{figure}
+
+
+\end{frame}
+
+% ---------- FRAME 7 ----------
+\begin{frame}{Cameraman: Comparison with Db4 Wavelet}
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_noise.png} 
+        \subcaption{SSIM: 27.99, PSNR: 20.57}
+        % \label{fig:2a}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_db4_visu.png}
+        \subcaption{SSIM: 71.88, PSNR: 24.91}
+        % \label{fig:2b}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_db4_sure.png}
+        \subcaption{SSIM: 73.40, PSNR: 29.17}
+        % \label{fig:2b}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_db4_bayes.png}
+        \subcaption{SSIM: 73.00, PSNR: 29.28}
+        % \label{fig:2b}
+    \end{minipage}
+
+    \centering
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_uniform_noise.png} 
+        \subcaption{SSIM: 43.78, PSNR: 25.02}
+        % \label{fig:2a}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_uniform_db4_visu.png}
+        \subcaption{SSIM: 76.87, PSNR: 26.89}
+        % \label{fig:2b}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{../outputImage/cameraman_uniform_db4_sure.png}
+        \subcaption{SSIM: 85.39, PSNR: 32.41}
+        % \label{fig:2b}
+    \end{minipage}
+    \begin{minipage}{0.22\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_uniform_db4_bayes.png}
+        \subcaption{SSIM: 81.69, PSNR: 32.09}
+        % \label{fig:2b}
+    \end{minipage}
+    \caption{Image Comparison: (a) Gaussian Noisy Image, (b) Denoised Image (Gaussian, VisuShrink), (c) Denoised Image (Gaussian, SureShrink), (d) Denoised Image (Gaussian, BayesShrink), (e) Uniform Noisy Image, (f) Denoised Image (Uniform, VisuShrink), (g) Denoised Image (Uniform, SureShrink), (h) Denoised Image (Uniform, BayesShrink)}
+\end{figure}
+\end{frame}
+
+% ---------- FRAME 8 ----------
+\begin{frame}{Cameraman: Comparison with Spatial Filter Image}
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_db4_visu.png}
+        \subcaption{SSIM: 71.88, PSNR: 24.91}
+        % \label{fig:2a}
+    \end{minipage}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_db4_sure.png}
+        \subcaption{SSIM: 73.40, PSNR: 29.17}
+        % \label{fig:2b}
+    \end{minipage}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_gaussian_db4_bayes.png}
+        \subcaption{SSIM: 73.00, PSNR: 29.28}
+        % \label{fig:2b}
+    \end{minipage}
+    \begin{minipage}{0.25\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{../outputImage/cameraman_denoised_spatial.png} 
+        \subcaption{SSIM: 75.78, PSNR: 27.54}
+        % \label{fig:2b}
+    \end{minipage}
+
+    \caption{Image Comparison: (a) Denoised Image (Gaussian, VisuShrink), (b) Denoised Image (Gaussian, SureShrink), (c) Denoised Image (Gaussian, BayesShrink), (d) Denoised Image (Gaussian Spatial Filter)}
+\end{figure}
+\end{frame}
