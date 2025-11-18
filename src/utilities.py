@@ -8,7 +8,6 @@ def applyThreshold(coeffs, threshold):
 
 # Estimate Noise Standard Deviation from Wavelet Coefficient
 def get_sigma_est(coeffs_list):
-    """Estimates noise standard deviation from the HH1 sub-band."""
     hh1 = coeffs_list[-1][2] # HH1 band
     median_hh1 = np.median(np.abs(hh1))
     if median_hh1 == 0: 
